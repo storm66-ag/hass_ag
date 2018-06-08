@@ -1,0 +1,5 @@
+- platform: polling
+  api_key: 518008560:AAFmWZcz14kPTf-MpJf7_zgtDi9_MWuCbc8
+  allowed_chat_ids:
+    - 171515892
+

@@ -1,0 +1,17 @@
+host: 127.0.0.1
+port: 8086
+database: hass_events
+username: hass
+password: hass2o13
+max_retries: 4
+override_measurement: homeassistant
+include:
+  entities:
+     - sensor.home_voltage
+     - sensor.home_amper
+     - sensor.home_power
+     - sensor.disk_used_home
+     - sensor.cpu_used
+tags:
+  instance: prod
+  source: hass

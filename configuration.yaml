@@ -1,0 +1,180 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: My Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 56.8545
+  longitude: 60.5717
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Asia/Yekaterinburg
+
+
+  customize: !include customize.yaml
+
+#########Хранение Истории################
+
+recorder:
+
+#  purge_interval: 2
+#  purge_keep_days: 4
+
+#################################
+
+#################INFLUXDB#################
+
+
+influxdb: !include influxdb1.yaml
+
+
+
+############Группы для объединения различных entity###################
+
+group: !include groups.yaml
+     
+#################################
+
+    
+# Show links to resources in log and frontend
+# introduction:
+
+# Enables the frontend
+frontend:
+  themes: !include_dir_merge_named themes/
+
+# Enables configuration UI
+config:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret http_password
+  # Uncomment this if you are using SSL or running in Docker etc
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+#discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+#conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# rack the sun
+#sun:
+
+# Text to speech
+#tts:
+#  platform: google
+
+
+
+#############BinarySensors#######################
+
+binary_sensor: !include binary_sensors.yaml
+
+########## Описание Сенсоров #####################
+sensor: !include sensors.yaml
+
+
+
+############## Все свитчи######################
+
+switch: !include switches.yaml
+
+######################################################
+
+
+
+############## MQTT ##################################
+
+mqtt:
+#  broker: 185.221.153.182
+  broker: 127.0.0.1
+  port: 1883
+  client_id: hass_opi
+  keepalive: 30
+  username: hass
+  password: h@$$2o18
+#  username: user1
+#  password: user2o17t$n%
+
+
+###############Telegram ##############################
+
+
+telegram_bot: !include telegram.yaml
+
+######################################################
+
+
+notify:
+  - name: home_vorobiev
+    platform: telegram
+    chat_id: 171515892
+
+
+############## Automation ###########################
+
+
+automation: !include automations.yaml
+
+
+
+#####################################################
+
+
+input_select:
+  hass_theme:
+    name: HASS Themes
+    options:
+      - default
+      - solarized
+      - wood
+      - mononight
+    initial: default
+    icon: mdi:theme-light-dark
+
+
+#################################################
+
+
+history_graph:
+  voltage:
+    name: Voltage Graph
+    entities:
+      - sensor.home_voltage
+  amper:
+    name: Amper Graph
+    entities:
+      - sensor.home_amper
+  power:
+    name: Power Graph
+    entities:
+      - sensor.home_power
+
+
+#homekit:
+#discovery:
+#  enable:
+#    - homekit
+
+homekit:
+  pincode: 560-39-724  
+
+
+
+logger:
+  default: warning
+  logs:
+    homeassistant.components.homekit: debug
+    pyhap: debug
+

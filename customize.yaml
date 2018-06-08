@@ -1,0 +1,29 @@
+sensor.yr_symbol:
+  friendly_name: Облачность
+sensor.date:
+  friendly_name: Дата
+sensor.time:
+  friendly_name: Время
+sensor.speedtest_download:
+  friendly_name: Прием
+sensor.speedtest_upload:
+  friendly_name: Передача
+sensor.speedtest_ping:
+  friendly_name: Задержка
+sensor.exchange_rate_1_btc:
+  friendly_name: Биткоин(1BTC)
+group.time_date:
+  friendly_name: Сегодня
+group.temp_ext:
+  friendly_name: Погода в регионе
+group.systemmonitor:
+  friendly_name: Система
+group.devices:
+  friendly_name: Устройства
+zone.home:
+  friendly_name: Hass
+device_tracker.alexg:
+  friendly_name: Алексей_GPS
+switch.cameup:
+  icon: mdi:road-variant
+  assumed_state: false

@@ -1,0 +1,88 @@
+- platform: yweather
+  monitored_conditions:
+      - weather
+      - weather_current
+      - temp_min
+      - temp_max
+      - wind_speed
+      - pressure
+      - visibility
+      - humidity
+      - temperature
+
+- platform: template
+  sensors:
+      pressure_ext:
+        value_template: "{{ (states.sensor.yweather_pressure.state | float / 1.33) | int  }}"
+        unit_of_measurement: 'мм рт. ст'
+
+#  - platform: rest
+#    name: M2ADC1
+#    unit_of_measurement: KPa
+#    resource: http://127.0.0.1:5500/secondbt/adcs/A1
+- platform: time_date
+  name: time_date
+  display_options:
+      - 'time'
+      - 'date'
+- platform: speedtest
+  hour:
+      - 0
+      - 6
+      - 12
+      - 18
+  monitored_conditions:
+      - ping
+      - download
+      - upload
+- platform: systemmonitor
+  resources:
+      - type: disk_use_percent
+        arg: /home
+      - type: memory_free
+      - type: processor_use
+- platform: bitcoin
+  display_options:
+      - exchangerate
+      - trade_volume_btc
+      - trade_volume_usd
+- platform: mqtt
+  name: sonoff_room1_t
+  state_topic: "sonoff_room1/SENSOR"
+  value_template: "{{ value_json['DHT11'].Temperature }}"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: sonoff_room1_h
+  state_topic: "sonoff_room1/SENSOR"
+  value_template: "{{ value_json['DHT11'].Humidity }}"
+  unit_of_measurement: "%"
+- platform: mqtt
+  name: esp8266_tco1
+  state_topic: "tele/esp8266_tco1/SENSOR"
+  value_template: "{{ value_json.DS18B20.Temperature }}"
+  unit_of_measurement: "°C"
+
+- platform: mqtt
+  name: esp8266_tco11
+  state_topic: "esp8266_tco1/temp"
+  unit_of_measurement: "°C"
+
+#- platform: command_line
+#  name: home_voltage
+#  command: "/root/.homeassistant/vr007_req.sh u " 
+#  unit_of_measurement: "V"
+#  value_template: '{{ value }}'
+
+#- platform: command_line
+#  name: home_amper
+#  command: "/root/.homeassistant/vr007_req.sh i "
+#  unit_of_measurement: "A"
+#  value_template: '{{ value }}'
+
+#- platform: command_line
+#  name: home_power
+#  command: "/root/.homeassistant/vr007_req.sh p "
+#  unit_of_measurement: "Vatt"
+#  value_template: '{{ value }}'
+
+

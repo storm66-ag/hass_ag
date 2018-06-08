@@ -1,0 +1,84 @@
+
+default_view:
+    view: yes
+    icon: mdi:home
+    entities:
+      - group.time_date
+      - group.systemmonitor 
+      - group.all_switch
+      - group.device_check
+      - group.hass_theme
+      - group.energy_home
+
+systemmonitor:
+    view: no
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.speedtest_ping
+      - sensor.disk_use_home
+      - sensor.ram_free
+      - sensor.cpu_use
+time_date:
+    view: no
+    entities:
+      - sensor.date
+      - sensor.time
+      - sensor.yweather_temperature
+      - sensor.yweather_wind_speed
+      - sensor.yweather_pressure
+      - sensor.yweather_current
+      - sensor.exchange_rate_1_btc
+all_switch:
+    view: no
+    entities:
+      - switch.k
+      - switch.sonoff1
+      - switch.cameup
+      - switch.esp8266_tco1_sw
+      - sensor.sonoff_room1_t
+      - sensor.sonoff_room1_h
+      - sensor.esp8266_tco1
+      - sensor.esp8266_tco11
+      - switch.kodi_on
+
+energy_home:
+    view: no
+    entities:
+      - sensor.home_voltage
+      - sensor.home_amper
+      - sensor.home_power
+
+graphs:
+    view: yes
+    entities:
+      - history_graph.voltage_graph
+      - history_graph.amper_graph
+      - history_graph.power_graph
+
+temp_ext:
+    view: no
+    entities:
+      - sensor.yr_symbol
+
+device_check:
+    view: yes
+    icon: mdi:home-assistant
+    entities:
+      - group.devices_doroninv
+      - group.devices_vorobiev
+devices_doroninv:
+    view: no
+    entities:
+      - binary_sensor.dorv_router
+devices_vorobiev:
+    view: no
+    entities:
+      - binary_sensor.vorv_router
+      - binary_sensor.vorv_rpi
+      - binary_sensor.vorv_sonoff1
+       
+hass_theme:
+    view: yes
+    entities: 
+      - input_select.hass_theme
