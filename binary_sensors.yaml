@@ -1,15 +1,18 @@
 - platform: ping
-  host: 212.113.253.230
+  host: 212.113.253.233
   name: dorv_router
 
 - platform: ping
-  host: 192.168.16.1
+#  host: 192.168.16.1
+  host: 8.8.8.8
   name: vorv_router
 
 - platform: ping
-  host: 192.168.16.250 
+ # host: 192.168.16.250 
+  host: 8.8.8.8
   name: vorv_rpi
 
 - platform: ping
-  host: 192.168.16.63
+  host: 8.8.8.8
+ #host: 192.168.16.63
   name: vorv_sonoff1

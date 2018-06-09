@@ -1,0 +1,61 @@
+play_kodi_pvr:
+    alias: Turn on the silly box
+    sequence:
+      - alias: TV on
+        service: media_player.turn_on
+        data:
+          entity_id: media_player.kodi
+
+      - alias: Play TV channel
+        service: media_player.play_media
+        data_template:
+          entity_id: media_player.kodi
+          media_content_type: "CHANNEL"
+          media_content_id: >
+            {% if (now().hour < 14) or ((now().hour == 14) and (now().minute < 50)) %}
+              10
+            {% elif (now().hour < 16) %}
+              15
+            {% elif (now().hour < 20) %}
+              2
+            {% elif (now().hour == 20) and (now().minute < 50) %}
+              10
+            {% elif (now().hour == 20) or ((now().hour == 21) and (now().minute < 15)) %}
+              15
+            {% else %}
+              10
+            {% endif %}
+
+get_recent_movies:
+    alias: Last added movies
+    sequence:
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi
+          method: VideoLibrary.GetRecentlyAddedMovies
+          properties:
+            - title
+            - year
+            - file
+            - lastplayed
+get_recent_episodes:
+    alias: Last TV shows
+    sequence:
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi
+          method: VideoLibrary.GetRecentlyAddedEpisodes
+          properties:
+            - showtitle
+            - file
+            - lastplayed
+            - firstaired
+
+get_pvr_channels:
+    alias: TV Channels
+    sequence:
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi
+          method: PVR.GetChannels
+          channelgroupid: 1

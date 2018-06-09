@@ -36,6 +36,13 @@ group: !include groups.yaml
      
 #################################
 
+
+#############Thermostat###################
+
+
+climate: !include climate.yaml
+
+#########################################
     
 # Show links to resources in log and frontend
 # introduction:
@@ -54,7 +61,7 @@ http:
   # base_url: example.duckdns.org:8123
 
 # Checks for available updates
-updater:
+#updater:
 
 # Discover some devices automatically
 #discovery:
@@ -83,8 +90,6 @@ binary_sensor: !include binary_sensors.yaml
 
 ########## Описание Сенсоров #####################
 sensor: !include sensors.yaml
-
-
 
 ############## Все свитчи######################
 
@@ -132,6 +137,8 @@ automation: !include automations.yaml
 #####################################################
 
 
+#####################THEMES#########################
+
 input_select:
   hass_theme:
     name: HASS Themes
@@ -142,6 +149,7 @@ input_select:
       - mononight
     initial: default
     icon: mdi:theme-light-dark
+
 
 
 #################################################
@@ -162,15 +170,34 @@ history_graph:
       - sensor.home_power
 
 
-#homekit:
-#discovery:
-#  enable:
-#    - homekit
+################APPLE####################
 
 homekit:
-  pincode: 560-39-724  
+  filter:
+    include_domains:
+      - alarm_control_panel
+      - light
+      - media_player
+      - sensor
+      - switch
+      - thermostat
+    exclude_entities:
+      - switch.esp8266_tco1_sw      
+      - sensor.sonoff_room1_t
+      - sensor.sonoff_room1_h
+      - sensor.esp8266_tco11
+  media_player.kodi:
+    feature_list:
+      - feature: on_off
+      - feature: play_pause
+      - feature: play_stop
+      - feature: toggle_mute
+
+##########################################
 
 
+
+################LOGGING###################
 
 logger:
   default: warning
@@ -178,3 +205,40 @@ logger:
     homeassistant.components.homekit: debug
     pyhap: debug
 
+
+############################################
+
+#####################KODI###################
+
+
+media_player:
+  # https://home-assistant.io/components/media_player.kodi/
+  - platform: kodi
+    host: 192.168.1.250
+    port: 80
+    turn_on_action:
+      service: media_player.kodi_call_method
+      data:
+        entity_id: media_player.kodi
+        method: Addons.ExecuteAddon
+        addonid: script.json-cec
+        params:
+          command: activate
+    turn_off_action:
+    - service: media_player.media_stop
+      data:
+        entity_id: media_player.kodi
+    - service: media_player.kodi_call_method
+      data:
+        entity_id: media_player.kodi
+        method: Addons.ExecuteAddon
+        addonid: script.json-cec
+        params:
+          command: standby
+
+
+
+############################################
+
+
+script: !include scripts.yaml

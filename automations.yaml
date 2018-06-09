@@ -23,17 +23,17 @@
         message: Host1 доступен!
 
 
-- alias: mqtt_tco1
-  trigger: 
-    - platform: time
-      minutes: '/1'
-      seconds: 00
-  action: 
-    - service: mqtt.publish
-      data:
-        topic: "esp8266_tco1/temp"
-        payload_template: ' {{ states.sensor.esp8266_tco1.state }} '
-        retain: true
+#- alias: mqtt_tco1
+#  trigger: 
+#    - platform: time
+#      minutes: '/1'
+#      seconds: 00
+#  action: 
+#    - service: mqtt.publish
+#      data:
+#        topic: "esp8266_tco1/temp"
+#        payload_template: ' {{ states.sensor.esp8266_tco1.state }} '
+#        retain: true
 
 
 

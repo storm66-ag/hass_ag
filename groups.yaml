@@ -32,15 +32,18 @@ time_date:
 all_switch:
     view: no
     entities:
-      - switch.k
-      - switch.sonoff1
-      - switch.cameup
-      - switch.esp8266_tco1_sw
-      - sensor.sonoff_room1_t
-      - sensor.sonoff_room1_h
-      - sensor.esp8266_tco1
-      - sensor.esp8266_tco11
-      - switch.kodi_on
+ #     - switch.k
+ #     - switch.sonoff1
+     - switch.broadlink1_sw
+     - switch.home1_sw
+     - sensor.home1_t 
+     - climate.home1_c
+#      - switch.esp8266_tco1_sw
+#      - sensor.sonoff_room1_t
+#      - sensor.sonoff_room1_h
+ #     - sensor.esp8266_tco1
+ #     - sensor.esp8266_tco11
+ #     - switch.kodi_on
 
 energy_home:
     view: no
@@ -82,3 +85,20 @@ hass_theme:
     view: yes
     entities: 
       - input_select.hass_theme
+
+kodi_group:
+    view: yes
+    icon: mdi:youtube
+    entities:
+      - media_player.kodi
+      - input_boolean.mode_kodi
+      - input_number.kodi_volume
+      - group.media_select
+
+Media Select:    
+    control: hidden
+    entities:
+      - input_select.kodi_results
+      - script.get_recent_movies
+      - script.get_recent_episodes
+      - script.get_pvr_channels

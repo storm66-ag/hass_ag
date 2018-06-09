@@ -6,24 +6,23 @@
 #    body_on: "true\n"
 #    body_off: "false\n"
 
-#- platform: broadlink
-#  host: 192.168.1.230
-#  mac: 'EB:43:f4:34:EA:34'
-#  timeout: 80
-#  switches:
-#      came_up: 
-#        friendly_name: "cameUP"
-#        command_on: 'shA0ABAtLw8RLS8PEC0RLS8PLw8vDy8PLg8vDxEtES0vDy8PLw8vDxAuEC0QAAHQLw8vDxAtEC4AAAAA'
+- platform: broadlink
+  name: broadlink
+  host: 192.168.1.230
+  mac: 'EB:43:f4:34:EA:34'
+  timeout: 80
+  switches:
+      came_up: 
+        friendly_name: "broadlink1_sw"
+        command_on: 'shA0ABAtLw8RLS8PEC0RLS8PLw8vDy8PLg8vDxEtES0vDy8PLw8vDxAuEC0QAAHQLw8vDxAtEC4AAAAA'
 
 - platform: mqtt
-  name: sonoff1
-  friendly_name: "Sonoff_1"
-  state_topic: "sonoff/room1/relay/0"
-  command_topic: "sonoff/room1/relay/0/set"
-  payload_on: 1
-  payload_off: 0
-  optimistic: false
-  qos: 0
+  name: home1_sw
+  state_topic: "stat/sonoff1/POWER"
+  command_topic: "cmnd/sonoff1/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  qos: 1
   retain: true
 
 - platform: mqtt

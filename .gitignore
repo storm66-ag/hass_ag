@@ -1,6 +1,7 @@
 *
 !*.yaml
 !scenes
-!.gitignore
+.gitignore
 secrets.yaml
 known_devices.yaml
+kodi_ip.yaml

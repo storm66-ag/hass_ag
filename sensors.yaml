@@ -57,8 +57,8 @@
   value_template: "{{ value_json['DHT11'].Humidity }}"
   unit_of_measurement: "%"
 - platform: mqtt
-  name: esp8266_tco1
-  state_topic: "tele/esp8266_tco1/SENSOR"
+  name: home1_t
+  state_topic: "tele/sonoff1/SENSOR"
   value_template: "{{ value_json.DS18B20.Temperature }}"
   unit_of_measurement: "°C"
 
