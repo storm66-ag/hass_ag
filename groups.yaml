@@ -91,10 +91,10 @@ kodi_group:
     icon: mdi:youtube
     entities:
       - media_player.kodi
-      - input_boolean.mode_kodi
       - input_number.kodi_volume
-      - group.media_select
-
+      - notify.kodi_bedroom     
+      - script.play_kodi_pvr
+      - script.stop_kodi_pvr
 Media Select:    
     control: hidden
     entities:
