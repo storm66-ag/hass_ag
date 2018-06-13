@@ -178,19 +178,27 @@ history_graph:
 
 homekit:
   filter:
-    include_domains:
-      - alarm_control_panel
-      - light
-      - media_player
-      - sensor
-      - switch
-      - thermostat
-    exclude_entities:
-      - switch.esp8266_tco1_sw      
-      - sensor.sonoff_room1_t
-      - sensor.sonoff_room1_h
-      - sensor.esp8266_tco11
-  media_player.kodi:
+#    include_domains:
+#      - alarm_control_panel
+#      - light
+#      - sensor
+#      - climate
+#      - MediaPlayer
+#      - media_player
+
+    include_entities:
+      - binary_sensor.dorv_router
+      - climate.home1_c
+      - media_player.kodi
+      - sensor.home1_t
+      - sensor.pressure_ext
+      - switch.home1_sw
+      - switch.kitchen_1
+      - switch.kitchen_2
+      - switch.kitchen_3
+      - switch.kitchen_4
+
+#  media_player.kodi:
 #    feature_list:
 #      - feature: on_off
 #      - feature: play_pause
@@ -222,12 +230,25 @@ media_player:
     port: 80
     tcp_port: 9090
     enable_websocket: true
-    turn_on_action: 
-      service: script.play_kodi_pvr
-    turn_off_action: 
-      service: script.stop_kodi_pvr
-   
-
+    turn_on_action:
+      service: media_player.kodi_call_method
+      data:
+        entity_id: media_player.kodi
+        method: Addons.ExecuteAddon
+        addonid: script.json-cec
+        params:
+          command: activate
+    turn_off_action:
+    - service: media_player.media_stop
+      data:
+        entity_id: media_player.kodi
+    - service: media_player.kodi_call_method
+      data:
+        entity_id: media_player.kodi
+        method: Addons.ExecuteAddon
+        addonid: script.json-cec
+        params:   
+          command: standby
 
 
 ############################################

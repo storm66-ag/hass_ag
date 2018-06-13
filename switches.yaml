@@ -12,9 +12,24 @@
   mac: 'EB:43:f4:34:EA:34'
   timeout: 80
   switches:
-      came_up: 
-        friendly_name: "broadlink1_sw"
-        command_on: 'shA0ABAtLw8RLS8PEC0RLS8PLw8vDy8PLg8vDxEtES0vDy8PLw8vDxAuEC0QAAHQLw8vDxAtEC4AAAAA'
+    kitchen_1: 
+        friendly_name: "kitchen1_sw"
+        command_on: 'smk0AAoaGgkJAAEJGwkaCRoJGwkJGgoaGgkJGhoJCRobCQkaChobCQkaGwkJGgoaCRobCRsJChoAAAAA'
+        command_off: 'smk0AAoaGgkJAAEJGwkaCRoJGwkJGgoaGgkJGhoJCRobCQkaChobCQkaGwkJGgoaCRobCRsJChoAAAAA'
+    kitchen_2:
+        friendly_name: "kitchen2_sw"
+        command_on: 'slI0AAkaCRsbCQobGwkKGgoaChsbCQkaChsKGhsJCgABDRsJGwkbCRsJChoKGxsJCRsbCQoaGwkAAAAA'
+        command_off: 'slI0AAkaCRsbCQobGwkKGgoaChsbCQkaChsKGhsJCgABDRsJGwkbCRsJChoKGxsJCRsbCQoaGwkAAAAA'
+    kitchen_3:
+        friendly_name: "kitchen3_sw"
+        command_on: 'sl80ABsJGwkbCRsJChsKGxsJChsbCQobGwkKGwkbGwoKGxwJChsJGwobHAkbChsKChsKGwoAAREAAAAA'
+        command_off: 'sl80ABsJGwkbCRsJChsKGxsJChsbCQobGwkKGwkbGwoKGxwJChsJGwobHAkbChsKChsKGwoAAREAAAAA'
+    kitchen_4:
+        friendly_name: "kitchen4_sw"
+        command_on: 'siU0ABsJGwkJGgkaGwkJGxsJChobCQkbCRobCQkbGwkJGwkaCRsbCQkaGwkKGgkbCQABDBoJGwkAAAAA'
+        command_off: 'siU0ABsJGwkJGgkaGwkJGxsJChobCQkbCRobCQkbGwkJGwkaCRsbCQkaGwkKGgkbCQABDBoJGwkAAAAA'
+
+
 
 - platform: mqtt
   name: home1_sw

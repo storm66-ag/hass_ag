@@ -12,30 +12,16 @@ play_kodi_pvr:
           entity_id: media_player.kodi
           media_content_type: "CHANNEL"
           media_content_id: >
+            {% if (now().hour < 14) or ((now().hour == 14) and (now().minute < 50)) %}
               10
-stop_kodi_pvr:
-    alias: Turn off the silly box
-    sequence:
-      - alias: TV off
-        service: media_player.turn_off
-        data:
-          entity_id: media_player.kodi
-
-get_pvr_channels:
-    alias: TV Channels
-    sequence:
-      - service: media_player.kodi_call_method
-        data:
-          entity_id: media_player.kodi
-          method: PVR.GetChannels
-          channelgroupid: 1
-
-kodi_test_notify:
-    alias: Kodi Alert - Test
-    sequence:
-      - service: notify.kodi_bedroom
-        data:
-          title: Home Assistant
-          message: This is a test message!
-          data:
-            icon: https://s-media-cache-ak0.pinimg.com/...
+            {% elif (now().hour < 16) %}
+              15
+            {% elif (now().hour < 20) %}
+              2
+            {% elif (now().hour == 20) and (now().minute < 50) %}
+              10
+            {% elif (now().hour == 20) or ((now().hour == 21) and (now().minute < 15)) %}
+              15
+            {% else %}
+              10
+            {% endif %}

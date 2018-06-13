@@ -102,3 +102,15 @@ Media Select:
       - script.get_recent_movies
       - script.get_recent_episodes
       - script.get_pvr_channels
+
+kitchen:
+    view: yes
+    icon: mdi:ceiling-light
+    entities:
+      - switch.kitchen_1
+      - switch.kitchen_2
+      - switch.kitchen_3
+      - switch.kitchen_4
+
+
+ 
