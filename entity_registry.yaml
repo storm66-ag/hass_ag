@@ -1,0 +1,10 @@
+light.gateway_light_7811dcb1fdb6:
+  config_entry_id:
+  name: GW_Mijjia
+  platform: xiaomi_aqara
+  unique_id: rgb7811dcb1fdb6
+sensor.illumination_7811dcb1fdb6:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: illumination7811dcb1fdb6

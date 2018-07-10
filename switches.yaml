@@ -8,26 +8,27 @@
 
 - platform: broadlink
   name: broadlink
+  timeout: 60
   host: 192.168.1.230
-  mac: 'EB:43:f4:34:EA:34'
-  timeout: 80
+  mac: '34:EA:34:F4:43:EB'
+  type: rm2
   switches:
     kitchen_1: 
         friendly_name: "kitchen1_sw"
-        command_on: 'smk0AAoaGgkJAAEJGwkaCRoJGwkJGgoaGgkJGhoJCRobCQkaChobCQkaGwkJGgoaCRobCRsJChoAAAAA'
-        command_off: 'smk0AAoaGgkJAAEJGwkaCRoJGwkJGgoaGgkJGhoJCRobCQkaChobCQkaGwkJGgoaCRobCRsJChoAAAAA'
+        command_on: 'sgo0ABwJHAkbCRsJChoKGhsJChobCQoaGwkKGgoaGwkKGhwJChoKGgoaGwkbCQoaChocCAoAAQ4AAAAA'
+        command_off: 'sgo0ABwJHAkbCRsJChoKGhsJChobCQoaGwkKGgoaGwkKGhwJChoKGgoaGwkbCQoaChocCAoAAQ4AAAAA'
     kitchen_2:
         friendly_name: "kitchen2_sw"
-        command_on: 'slI0AAkaCRsbCQobGwkKGgoaChsbCQkaChsKGhsJCgABDRsJGwkbCRsJChoKGxsJCRsbCQoaGwkAAAAA'
-        command_off: 'slI0AAkaCRsbCQobGwkKGgoaChsbCQkaChsKGhsJCgABDRsJGwkbCRsJChoKGxsJCRsbCQoaGwkAAAAA'
+        command_on: 'sg00AAoaChocCQoaChoKGhwJCgABEBwJGwkcCRwJChoKGhwJChscCQoaHAgKGgoaHAkKGhwJChoAAAAA'
+        command_off: 'sg00AAoaChocCQoaChoKGhwJCgABEBwJGwkcCRwJChoKGhwJChscCQoaHAgKGgoaHAkKGhwJChoAAAAA'
     kitchen_3:
         friendly_name: "kitchen3_sw"
-        command_on: 'sl80ABsJGwkbCRsJChsKGxsJChsbCQobGwkKGwkbGwoKGxwJChsJGwobHAkbChsKChsKGwoAAREAAAAA'
-        command_off: 'sl80ABsJGwkbCRsJChsKGxsJChsbCQobGwkKGwkbGwoKGxwJChsJGwobHAkbChsKChsKGwoAAREAAAAA'
+        command_on: 'shI0AAobHAkKGxwJChocCQobChscCQoaHAkKGgobChscCRwJHAkKGwobCgABEBwJGwkbChsJChsAAAAA'
+        command_off: 'shI0AAobHAkKGxwJChocCQobChscCQoaHAkKGgobChscCRwJHAkKGwobCgABEBwJGwkbChsJChsAAAAA'
     kitchen_4:
         friendly_name: "kitchen4_sw"
-        command_on: 'siU0ABsJGwkJGgkaGwkJGxsJChobCQkbCRobCQkbGwkJGwkaCRsbCQkaGwkKGgkbCQABDBoJGwkAAAAA'
-        command_off: 'siU0ABsJGwkJGgkaGwkJGxsJChobCQkbCRobCQkbGwkJGwkaCRsbCQkaGwkKGgkbCQABDBoJGwkAAAAA'
+        command_on: 'sg80ABwJChoKGhwJChsbCQoaHAkKGgoaGwkKGhwJChoKGgoaGwkKGhwJChoKGgoAAQ8bCRsJHAkAAAAA'
+        command_off: 'sg80ABwJChoKGhwJChsbCQoaHAkKGgoaGwkKGhwJChoKGgoaGwkKGhwJChoKGgoAAQ8bCRsJHAkAAAAA'
 
 
 

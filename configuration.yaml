@@ -23,6 +23,20 @@ recorder:
 
 #################################
 
+###############xiaomi###############
+
+xiaomi_aqara:
+#  interface: '192.168.1.40'
+  gateways:
+    - mac: 78:11:dc:b1:fd:b6
+      key: AC881C59AD6B4431
+      host: 192.168.1.40
+
+###################################
+
+
+
+
 #################INFLUXDB#################
 
 
@@ -116,19 +130,19 @@ mqtt:
 ###############Telegram ##############################
 
 
-telegram_bot: !include telegram.yaml
+#telegram_bot: !include telegram.yaml
 
 ######################################################
 
 
 notify:
-  - name: home_vorobiev
-    platform: telegram
-    chat_id: 171515892
+#  - name: home_vorobiev
+#    platform: telegram
+#    chat_id: 171515892
 
-  - name: kodi_bedroom
-    platform: kodi
-    host: 192.168.1.250
+#  - name: kodi_bedroom
+#    platform: kodi
+#    host: 192.168.1.250
 
 
 ############## Automation ###########################

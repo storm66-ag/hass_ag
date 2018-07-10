@@ -111,6 +111,8 @@ kitchen:
       - switch.kitchen_2
       - switch.kitchen_3
       - switch.kitchen_4
+      - light.gateway_light_7811dcb1fdb6
+
 
 
  
